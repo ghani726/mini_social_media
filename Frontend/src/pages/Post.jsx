@@ -14,23 +14,21 @@ const Post = () => {
     const CreatePost = async (e) => {
         e.preventDefault();
 
-
-        
-
         setisLoading(true)
         const formData = new FormData(e.target)
-        await axios.post("http://localhost:3000/post", formData).then((res)=>{
+        await axios.post("http://localhost:3000/post", formData).then(()=>{
             setisLoading(false)
             navigate("/")
 
         }).catch((err)=>{
+    
             console.log(err);
             alert("ERRRRRRor")
         })
             
     }
     return (
-        <form onSubmit={CreatePost} className="flex flex-col justify-center items-center p-6 gap-6 bg-white rounded-2xl w-[99%] max-w-md">
+        <form onSubmit={CreatePost} className="flex flex-col justify-center items-center p-6 gap-6 bg-white rounded-2xl w-[90%] max-w-md">
             <h1 className="text-3xl font-bold">Post</h1>
             {isLoading?<Loader></Loader>:null}
             <div className="w-full h-64 overflow-hidden border-2 border-black bg-gray-100 rounded-lg flex justify-center items-center">
